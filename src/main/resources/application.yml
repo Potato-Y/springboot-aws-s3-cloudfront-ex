@@ -1,2 +1,13 @@
 spring:
-  application: name=aws-s3-cloudfront
+  application:
+    name: aws-s3-cloudfront
+
+aws:
+  access-key: ACCESS_KEY
+  secret-key: SECRET_KEY
+  s3:
+    bucket-name: spring-ex
+  cloudfront:
+    domain: domain.cloudfront.net
+    private-key-path: aws/cloudfront/aws_ex_private_key.pem
+    key-id: PUBLIC_KEY_ID
