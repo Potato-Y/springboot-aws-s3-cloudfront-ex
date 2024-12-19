@@ -1,4 +1,6 @@
 HELP.md
+application-real.yml
+aws_ex_private_key.pem
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
