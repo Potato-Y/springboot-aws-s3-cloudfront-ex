@@ -40,6 +40,13 @@ public class PostApiController {
         return ResponseEntity.status(HttpStatus.OK).body(PostResponse.from(post, urls));
     }
 
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long postId) {
+        postService.deletePost(postId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
     private List<String> getFileUrls(Post post) {
         List<String> urls = new ArrayList<>();
         post.getPostFiles().forEach(file -> {

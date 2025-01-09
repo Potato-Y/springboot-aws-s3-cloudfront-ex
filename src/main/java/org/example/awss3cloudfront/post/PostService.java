@@ -53,6 +53,18 @@ public class PostService {
         return post;
     }
 
+    @Transactional
+    public void deletePost(Long postId) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
+
+        if (!post.getPostFiles().isEmpty()) {
+            String path = post.getId().toString(); // {post_id}/image1.png 와 같은 형식이 되도록
+            s3Service.deleteFolder(path);
+        }
+
+        postRepository.deleteById(postId);
+    }
+
     @Transactional(readOnly = true)
     public Post findById(Long id) {
         return postRepository.findById(id).orElseThrow(RuntimeException::new);
